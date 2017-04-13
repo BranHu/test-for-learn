@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="jquery-ui.css">
+	<script type="text/javascript" src="jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="jquery-ui.js"></script>
+</head>
+<body>
+	<div class="wrap"></div>
+	<div id="dialog"></div>
+	<script type="text/javascript">
+		// $( "#dialog" ).dialog({
+		//   dialogClass: "no-close",    //给对话框添加这个属性名
+		//   //autoOpen: false,            //是否自动开启，关闭后调用open()才会显示
+		//   title: "test",
+		//   classes: {
+		//     "ui-dialog": "highlight"
+		//   },
+		//   appendTo: ".wrap",			//将对话框添加到.wrap内
+		//   buttons: [				  //给对话框内加入按钮
+		//     {
+		//       text: "OK",				//按钮的显示文字
+		//       click: function() {			//按钮的点击事件
+		//         $( this ).dialog( "close" );
+		//       }
+		//     }
+		//   ]
+		// });
+		$("<div></div>").dialog({
+			title:"test"
+		})
+	</script>
+</body>
+</html>
