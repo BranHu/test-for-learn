@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	/*
+	**JS中创建对象的几种常见方式
+	**/
+	//1.工厂模式
+	// function creatPerson(name,age,job){
+	// 	var o = new Object();//这一步是关键，建一个模子
+	// 	o.name = name;//给模子增添原料
+	// 	o.age = age;
+	// 	o.job = job;
+	// 	o.sayName = function(){
+	// 		console.log(this.name);
+	// 	}
+	// 	return o;//返回出模子
+	// }
+
+	// var Person1 = creatPerson("Tom",18,"student");
+	// var Person2 = creatPerson("Jame",28,"player");
+
+	//2.构造函数模式
+	// function creatPerson(name,age,job){
+	// 	this.name = name;
+	// 	this.age = age;
+	// 	this.job = job;
+	// 	this.sayName = function(){
+	// 		console.log(this.name);
+	// 	};
+	// }
+
+	// var Person1 = new creatPerson("Tom",18,"student");
+	// var Person2 = new creatPerson("Jame",28,"player"); 
+
+	// // 构造函数优化，将方法移出来
+	// function creatPerson(name,age,job){ //这里不要加sayName入参
+	// 	this.name = name;
+	// 	this.age = age;
+	// 	this.job = job;
+	// 	this.sayName = sayName;
+	// }
+	// function sayName(){
+	// 	console.log(this.name);
+	// }
+
+	// var Person1 = new creatPerson("Tom",18,"student"); //这里需要new
+	// var Person2 = new creatPerson("Jame",28,"player"); //这里需要new
+
+	//3.原型模式
+	// function creatPerson(){
+	// }
+	// creatPerson.prototype.name = "Tom";
+	// creatPerson.prototype.age = "18";
+	// creatPerson.prototype.sayName = function(){
+	// 	console.log(this.name);
+	// };
+	// var Person1 = new creatPerson();
+	// Person1.sayName();      //这里显示Tom
+
+	// // 原型优化后,上面未优化时是向原型对象里面添加属性，下面优化后会直接替换原型对象
+	// function creatPerson(){
+	// }
+	// creatPerson.prototype = {
+	// 	name: "Tom", //这里是逗号哦不是分号
+	// 	age: 18,
+	// 	job: "student",
+	// 	sayName: function(){
+	// 		console.log(this.name);
+	// 	},
+	// }
+	// var Person1 = new creatPerson();
+	// Person1.sayName();      //这里显示Tom
+
+	//4.构造与原型混合
+	// function creatPerson(name,age,job){
+	// 	this.name = name;
+	// 	this.age = age;
+	// 	this.job = job;
+	// 	this.friends = ["a","b"];
+	// }
+	// creatPerson.prototype = {
+	// 	constructor: creatPerson,//！！！！这里是新定义的原型对象，不是在原型对象上添加属性，因此原型的constructor属性会改变指向方向，会指向Object对象
+	// 	sayName: function(){
+	// 		console.log(this.name);
+	// 	}
+	// }
+	// var Person1 = new creatPerson("Tom",18,"student");
+	// var Person2 = new creatPerson("Jame",28,"player");
+	// Person1.sayName();
+	// Person2.sayName();
+	// console.log(Person1.constructor);
+	</script>
+</body>
+</html>

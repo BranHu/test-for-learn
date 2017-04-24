@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<!-- li没有与option一致的value属性(option标签的value属性可以设置各种值),li可以设置value，但是必须是number类型的才会有效-->
+<body>
+	<ul>
+    	<li value="1" onclick="console.log(this.value)">test1</li>
+    	<li value="2" onclick="console.log(this.value)">test2</li>
+    	<li value="3" onclick="console.log(this.value)">test3</li>
+    	<li value="4" onclick="console.log(this.value)">test4</li>
+    </ul>
+    <ul>
+    	<li value=1 onclick="console.log(this.value)">test1</li>
+    	<li value=2 onclick="console.log(this.value)">test2</li>
+    	<li value=3 onclick="console.log(this.value)">test3</li>
+    	<li value=4 onclick="console.log(this.value)">test4</li>
+    </ul>
+</body>
+</html>

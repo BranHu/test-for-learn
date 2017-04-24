@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"></svg> -->
+
+	<script type="text/javascript">
+
+
+		(function(){
+
+			var SVG=function(h,w){
+				var NS="http://www.w3.org/2000/svg";
+				var svg=document.createElementNS(NS,"svg");
+				//必须通过setAttribute设置svg的width和height
+				//这种方式设置是失败的svg.width/svg.height
+				svg.setAttribute("width",w);
+				svg.setAttribute("height",h);
+				return svg;
+			}
+
+ 			var svg=SVG(1000,1000);
+			document.body.appendChild(svg);
+
+ 		//访问SVG元素的属性不是直接得到一个值，而是得到一个SVGAnimatedLength对象，这个对象又包含了两个SVGLength对象，名为animVal和baseVal。从名字就可以看出，SVG元素的属性有两个值，一个是自身设置的值，一个是自带动画效果的处理值。
+ 		//animVal中可以读取到SVG自带动画对其设置的值，它对于程序是只读的，赋值会产生错误。
+ 		//在SVG自带的动画过程中，baseVal的值是不变的，只有animVal的值变。
+ 		var rect = function(h,w,fill){
+			var NS="http://www.w3.org/2000/svg";
+			var SVGObj= document.createElementNS(NS,"rect");
+			SVGObj.width.baseVal.value=w;
+			SVGObj.height.baseVal.value=h;
+			//或者用js的setAttribute方法
+			// SVGObj.setAttribute("height",h);
+			// SVGObj.setAttribute("width",w);
+			SVGObj.style.fill=fill;
+			return SVGObj;
+		}
+
+		var r= rect(100,100,"blue");
+		svg.appendChild(r);
+
+		//x,y来定义图形的坐标位置
+		var animate=function(obj){
+			return function(){
+				obj.x.baseVal.value+=1;
+				obj.y.baseVal.value+=1;
+			}
+		}
+
+		//这里需要一点小技巧,需要将animate进行改写，运用函数式编程
+		setInterval(animate(r),200);
+
+		})()
+	</script>
+</body>
+</html>

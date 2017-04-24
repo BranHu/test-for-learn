@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div> 
+        <p>paragraph<br>paragraph</p>
+    </div> 
+    <script type="text/javascript">
+    /*
+    **event.stopImmediatePropagation()和event.stopPropagation()区别
+    **1.二者都可以阻止冒泡，即阻止祖先节点的事件触发
+    **2.主要区别是针对引起事件触发的元素，stopImmediatePropagation可以阻止该元素绑定的其他事件的触发，而stopPropagation则不能
+    */
+     document.querySelector("p").addEventListener("click", function(event){
+        alert("我是p元素上被绑定的第一个监听函数");
+        // 这个使用两者都会执行
+    }, false);
+    document.querySelector("p").addEventListener("click", function(event){
+        alert("我是p元素上被绑定的第二个监听函数");
+        event.stopImmediatePropagation();
+        //执行stopImmediatePropagation方法,阻止click事件冒泡,并且阻止p元素上绑定的其他click事件的事件监听函数的执行.
+        //event.stopPropagation();
+        //执行stopPropagation方法,阻止click事件冒泡,不会阻止p元素上绑定的其他click事件的事件监听函数的执行.
+        // 这个也会执行
+    }, false);
+    document.querySelector("p").addEventListener("click", function(event){
+        alert("我是p元素上被绑定的第三个监听函数");
+        //使用event.stopImmediatePropagation()，该监听函数排在上个函数后面,该函数不会被执行.
+        //使用event.stopPropagation()，该监听函数还是会被执行.
+    }, false);
+    document.querySelector("div").addEventListener("click", function(event){
+        alert("我是div元素,我是p元素的上层元素");
+        //p元素的click事件没有向上冒泡,该函数不会被执行.二者都不会
+    }, false);
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	/*
+	**eg1.测试window.open()
+	**1.window.open()会弹出一个弹窗，就像平常上网的弹窗广告一样
+	**2.在open()中直接设置弹窗的显示大小，和url路径
+	*/
+		// window.onload = function(){
+		// 	var a = function(){
+		// 		console.log(123);
+		// 	}
+		// 	a();
+		// 	newWin();
+		// }
+		// function newWin(){
+		// 	window.open("http://www.w3school.com.cn","","width=200,height=100")
+		// }
+
+
+	/*
+	**eg2.这是一个声明提升的小例子
+	**1.js中var和function的变量都会提升
+	**2.var的提升是(以下为例)先var bar--->console.log(bar)---bar=2
+	**因此经常会显示bar为undefined，即未赋值
+	*/
+		// (function(){
+  //           console.log(foo); // function 
+  //           console.log(bar);  //undefined
+  //           console.log(abc); // abc is not defined
+        	
+  //           var foo = 'hello',
+  //               // bar = function() {
+  //               //     return 'world';
+  //               // };
+  //               bar = 2;
+
+  //           function foo() {
+  //               return 'hello';
+  //           }
+  //       }());
+
+
+	/*
+	**eg3.测试$.each(array/object/json,function(index,value){})
+	**1.each的第一个入参为数组、对象、json数据结构
+	**2.each的第二个入参为遍历执行的函数
+	**3.该函数的入参第一个为遍历对象的编号，第二个对象为该对象的值
+	*/
+		// (function(){
+		// 	var bookstore = {
+		// 		book1:"编程指南",
+		// 		book2:"JAVA",
+		// 		book3:"javascript",
+		// 		book4:"PHP"
+		// 	}
+		// 	$.each(bookstore,function(a,b){
+		// 		console.log(a);
+		// 		console.log(b);
+		// 	})
+		// })()
+
+
+	/*
+	**eg4.这是一个测试for循环创建对象的小例子
+	**1.下面的例子利用了声明提升的原理，因此在函数体内使用var声明的变量，会被提到函数开始声明
+	**2.for循环不是一个函数体，因此for循环中声明的变量object的作用域是for循环所在的函数体，即该IIFE的作用域
+	**3.new在for循环里面每次循环都会实例化一个对象，循环几次实例化几个对象引用
+	**4.因此for循环内部主要原因是每次循环都实例化了一个object对象，将该对象装入到bascket数组中
+	*/
+		// (function(){
+		// 	function factory(){
+		// 		this.name = 'hujun';
+		// 	}
+
+		// 	var bascket = [];
+
+		// 	for(var i=0;i<4;i++){
+		// 		var object = new factory();
+		// 		object.id = i; 
+		// 		bascket[i] = object;
+		// 		console.log(object.id);
+		// 		console.log(bascket);
+
+		// 	}
+			
+		// 	console.log(object.name);
+		// 	console.log(object.id);
+		// 	console.log(bascket.length);
+		// })()
+
+
+	/*
+	**eg5.innerWidth/innerHeight、outerWidth/outerHeight的区别
+	**1.innerWidth/innerHeight---可视的浏览器窗口宽度和高度
+	**2.outerWidth/outerHeight---浏览器窗口的宽度和高度
+	*/
+		// (function(){
+		// 	console.log(window.outerWidth);
+		// 	console.log(window.outerHeight);
+		// 	console.log(window.innerWidth);
+		// 	console.log(window.innerHeight);
+		// })()
+
+
+	/*
+	**eg6.for in循环多维数组
+	*/
+		// (function(){
+		// 	var Arryarr = [[1,2,3],[3,2,1],[8,9,0],[0,9,8]],
+		// 		i, j, arr, num;
+		// 	for(i in Arryarr){
+		// 		arr = Arryarr[i];
+		// 		console.log(arr);
+		// 		for(j in arr){
+		// 			num = arr[j];
+		// 			console.log(num);
+		// 		}
+		// 	}
+		// })()
+
+
+	/*
+	**eg7.测试&&和||
+	**1.“&&” 运算遇到false就返回
+	**2.“||”运算遇到true就返回
+	*/
+		// (function(){
+		// 	var a = 1 && 2 && 3;
+		// 	var b = 3 && 2 && 1;
+		// 	var c = 0 && 1 && 2;
+		// 	var d = 1 || 2 || 3;
+		// 	var e = 3 || 2 || 1;
+		// 	var f = 0 || 2 || 3;
+		// 	var g = 0 || 0 || 1;
+		// 	console.log(a);
+		// 	console.log(b);
+		// 	console.log(c);
+		// 	console.log(d);
+		// 	console.log(e);
+		// 	console.log(f);
+		// 	console.log(g);
+		// })()
+
+
+	/*
+	**eg8.JS中函数自执行的几种方式
+	*/
+	//1.第一种方式
+	// (function(n){console.log(n);})(2);	
+	//2.第二种方式
+	// var a = function(){
+	// 	return 2;
+	// }();
+	// console.log(a);
+	//3.第三种方式
+	// function(){
+	// 	return 2;
+	// }(),
+	// function(){
+	// 	return 3;
+	// }()
+
+
+	/*
+	**eg9.匿名函数自执行中开启定时器，函数/变量未定义的问题
+	**1.setInterval()的第一个参数如果是字符串，这个字符串中的代码就是在全局环境中执行，作用域固定是全局作用域或window
+	**2.因此下面的IIFE中的定时器会去在全局作用域外找test()函数，因全局作用域是无法访问IIFE中的变量的，所以只显示‘全局作用域window’
+	*/
+	// (function(){
+	// 	function test(){
+	// 		console.log('闭包内');
+	// 	}
+
+		//这个是错误的
+		//setInterval('test()',1000);  //全局作用域window
+		//这个也是错误的，test()立即执行了
+		//setInterval(test(),1000);
+		//setInterval(test,1000);   //闭包内
+	// })()
+
+	// function test() {
+	// 	console.log('全局作用域window')
+	// }
+	
+	</script>
+</body>
+</html>

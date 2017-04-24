@@ -3,15 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="jquery-ui.css">
-	<script type="text/javascript" src="jquery-3.1.1.js"></script>
-	<script type="text/javascript" src="jquery-ui.js"></script>
 </head>
 <body>
 	<div class="wrap"></div>
 	<div id="dialog"></div>
+	<div id="ss"></div> 
+	<div id="progressbar"></div>
+	<script type="text/javascript" src="jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="jquery-ui.js"></script>
 	<script type="text/javascript">
+	/*
+	**eg1.JQueryUI中的dialog()小组件
+	**1.注意里面的每个属性的设置
+	**
+	*/
 		// $( "#dialog" ).dialog({
 		//   dialogClass: "no-close",    //给对话框添加这个属性名
 		//   //autoOpen: false,            //是否自动开启，关闭后调用open()才会显示
@@ -29,9 +34,59 @@
 		//     }
 		//   ]
 		// });
-		$("<div></div>").dialog({
-			title:"test"
-		})
+		// $("<div></div>").dialog({
+		// 	title:"test"
+		// })
+
+
+	/*
+	**eg2.JQueryUI中的this.element、this.options等已有的属性和方法
+	**1.this.element就是指的<div id="ss"></div>
+	**2.下面的IIFE立即执行，也立即调用了_init方法
+	*/
+		// $.widget('wijmo.wijspread',{
+		// 	options:{},
+		// 	_init:function(){
+		// 		console.log(this.element);
+		// 		console.log(this.options);
+		// 	},
+		// });
+
+		// $(function(){
+		// 	$('#ss').wijspread();
+		// })
+
+	/*
+	**eg3.JQueryUI中的progressbar的小demo
+	*/
+		// $(function(){
+		//     $("#progressbar").progressbar({
+		//       value: 20
+		//     });
+		//     var a=$("#progressbar");
+		//     console.log(a);
+		//   });
+
+
+	/*
+	**eg4.JQueryUI中的_init、_create等已有的属性和方法
+	**1.上面的progressbar组件一生成，则_init、_create就被调用
+	**2
+	*/
+		// (function($){
+		// 	$.widget('wijmo.wijspread',{
+		// 		options:{},
+		// 		_init:function(){
+		// 			console.log('这是_init，显示说明小部件一形成就应调动');
+		// 		},
+		// 		_create:function(){
+		// 			console.log('这是_create，显示说明小部件一形成就应调动');
+		// 		},
+		// 		open:function(){
+		// 			console.log('这是open，显示说明小部件一形成就应调动');
+		// 		}
+		// 	});
+		// })(jQuery);
 	</script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="text1" value="1234567890">     
+	<select onchange="setPos(this.selectedIndex)">     
+		<option value="0">0</option>     
+		<option value="1">1</option>     
+		<option value="2">2</option>     
+		<option value="3">3</option>     
+		<option value="4">4</option>     
+		<option value="5">5</option>     
+		<option value="6">6</option>     
+		<option value="7">7</option>     
+	</select>
+
+	<p><input type="text" id="mytextbox" size="20" value="Mozilla"/></p>
+    <p><button onclick="SelectText()">Select text</button></p>
+	<script type="text/javascript">
+	/*
+    **setSelectionRange--控制光标的位置的小例子
+    **1.setSelectionRange语法为inputElement.setSelectionRange(selectionStart, selectionEnd, [optional] selectionDirection);
+    **2.selectionStart入参表达的意思是input聚焦选择区域开始的位置
+    **3.selectionEnd入参表达的意思是input聚焦选择区域结束的位置
+    */
+		function setPos(num){
+	        console.log(num);     
+			var e = document.getElementById('text1');   
+			e.focus(); 
+			console.log(e);     
+			e.setSelectionRange(num,num);//这里的selectionStart和selectionEnd相同，即选择选择区域为没有，直接将光标设置在了selectionStart处
+		}
+
+		function SelectText () {
+        	var input = document.getElementById("mytextbox");
+            input.focus();
+            input.setSelectionRange(2,5);//这里selectionStart和selectionEnd相差3，即选择了3个字段（zil），依然是以selectionStart为开始选择的起点
+		}
+	</script>
+</body>
+</html>
