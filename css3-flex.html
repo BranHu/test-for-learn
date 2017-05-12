@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/**
+		*flex-direction: row | row-reverse | column | column-reverse
+		* 
+		*1.加了reverse后不仅顺序反了，起点也反了
+		*2.默认的是row，即不写flex-direction属性相当于该属性为row
+		*3.属性设置在容器上
+		*/
+		#content-flex-direction {
+			width: 400px;
+			display: flex;
+			flex-direction: row;
+		}
+
+		#content-flex-direction1 {
+			width: 400px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#content-flex-direction2 {
+			width: 400px;
+			display: flex;
+			flex-direction: row-reverse;
+		}
+
+		#content-flex-direction3 {
+			width: 400px;
+			display: flex;
+			flex-direction: column-reverse;
+		}
+
+		
+		/**
+		*flex-wrap: nowrap | wrap | wrap-reverse
+		* 
+		*1.解决flex容器一行排不下去的样式问题
+		*2.nowrap子元素不自动换行
+		*3.属性设置在容器上
+		*/
+		.content-flex-wrap {
+			height: 150px;
+			display: flex;
+			flex-wrap: nowrap;
+		}
+			
+		.content-flex-wrap1 {
+			height: 150px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.content-flex-wrap2 {
+			height: 150px;
+			display: flex;
+			flex-wrap: wrap-reverse;
+		}
+
+		.content-flex-wrap div,
+		.content-flex-wrap1 div,
+		.content-flex-wrap2 div {
+			height: 50%;
+    		width: 50%;
+		}
+
+
+		/**
+		*flex-flow
+		*
+		*1.flex-flow为上面两项的简写
+		*2.属性设置在容器上 
+		*/
+
+
+		/**
+		*justify-content: flex-start | flex-end | center | space-between | space-around(这5个是比较常用的)
+		* 
+		*1.定义的是纵向轴的位置
+		*2.justify-content 有太多的属性，分类的话有Positional alignment, Baseline alignment, Distributed alignment, Overflow alignment, Global values这么些类
+		*3.space-between 平均分配
+		*4.space-around 也是平均分配，但是两端的子元素距两端的距离是子元素之间的距离的一半
+		*5.属性设置在容器上
+		*/
+		#content-justify-content {
+			width: 400px;
+			display: flex;
+			justify-content: flex-start;
+		}
+
+		#content-justify-content1 {
+			width: 400px;
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		#content-justify-content2 {
+			width: 400px;
+			display: flex;
+			justify-content: center;
+		}
+
+		#content-justify-content3 {
+			width: 400px;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		#content-justify-content4 {
+			width: 400px;
+			display: flex;
+			justify-content: space-around;
+		}
+
+		/**
+		*align-items: flex-start | flex-end | center | baseline | stretch
+		* 
+		*1.定义的是横向轴的位置
+		*2.baseline: 项目的第一行文字的基线对齐
+		*3.stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度
+		*4.属性设置在容器上
+		*/
+		#content-align-items {
+			background-color: black;
+			width: 400px;
+			height: 100px;
+			display: flex;
+			align-items: flex-start;
+		}
+
+		#content-align-items1 {
+			background-color: black;
+			width: 400px;
+			height: 100px;
+			display: flex;
+			align-items: flex-end;
+		}
+
+		#content-align-items2 {
+			background-color: black;
+			width: 400px;
+			height: 100px;
+			display: flex;
+			align-items: center;
+		}
+
+		#content-align-items3 {
+			background-color: black;
+			width: 400px;
+			height: 100px;
+			display: flex;
+			align-items: baseline;
+		}
+
+		#content-align-items4 {
+			background-color: black;
+			width: 400px;
+			height: 100px;
+			display: flex;
+			align-items: stretch;
+		}
+	
+
+		/**
+		*align-content
+		*
+		*1.align-content 属性定义了多根轴线的对齐方式(即有多行)。如果项目只有一根轴线，该属性不起作用(横向轴的) 
+		*2.align-content: flex-start | flex-end | center | space-between | space-around | stretch; (justify-content类似)
+		*3.属性设置在容器上
+		*/
+
+		/**
+		*order
+		*
+		*1.order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。 
+		*2.属性设置在项目上
+		*/
+
+		/**
+		*flex-grow
+		*
+		*1.flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+		*2.如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
+		*3.如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。 
+		*4.属性设置在项目上
+		*/
+
+		/**
+		*flex-shrink
+		*
+		*1.flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 
+		*2.属性设置在项目上
+		*/
+
+		/**
+		*align-self
+		*
+		*1.align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+		*2.默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。 
+		*3.属性设置在项目上
+		*/
+	</style>
+</head>
+<body>
+<!-- 	<h4>This is a row</h4>
+	<div id="content-flex-direction">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is a column</h4>
+	<div id="content-flex-direction1">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is a row-reverse</h4>
+	<div id="content-flex-direction2">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is a column-reverse</h4>
+	<div id="content-flex-direction3">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div> -->
+
+<!-- ———————————————————————————————————————————————————————————————————————————————————————————— -->
+
+<!-- 	<h4>This is an example for flex-wrap:wrap </h4>
+	<div class="content-flex-wrap">
+	    <div class="red" style="background-color:red">1</div>
+	    <div class="green" style="background-color:green">2</div>
+	    <div class="blue" style="background-color:blue">3</div>
+	</div>
+	<h4>This is an example for flex-wrap:nowrap </h4>
+	<div class="content-flex-wrap1">
+	    <div class="red" style="background-color:red">1</div>
+	    <div class="green" style="background-color:green">2</div>
+	    <div class="blue" style="background-color:blue">3</div>
+	</div>
+	<h4>This is an example for flex-wrap:wrap-reverse </h4>
+	<div class="content-flex-wrap2">
+	    <div class="red" style="background-color:red">1</div>
+	    <div class="green" style="background-color:green">2</div>
+	    <div class="blue" style="background-color:blue">3</div>
+	</div> -->
+
+<!-- ———————————————————————————————————————————————————————————————————————————————————————————— -->
+
+<!-- 	<h4>This is flex-start</h4>
+	<div id="content-justify-content">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is flex-end</h4>
+	<div id="content-justify-content1">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is center</h4>
+	<div id="content-justify-content2">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is space-between</h4>
+	<div id="content-justify-content3">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+	
+	<h4>This is space-around</h4>
+	<div id="content-justify-content4">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div> -->
+
+<!-- ———————————————————————————————————————————————————————————————————————————————————————————— -->
+
+	<h4>This is flex-start</h4>
+	<div id="content-align-items">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+
+	<h4>This is flex-end</h4>
+	<div id="content-align-items1">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is center</h4>
+	<div id="content-align-items2">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+
+	<h4>This is space-between</h4>
+	<div id="content-align-items3">
+	    <div id="box" style="background-color:red;width:50px;height:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;height:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;height:50px;">C</div>
+	</div>
+	
+	<h4>This is space-around</h4>
+	<div id="content-align-items4">
+	    <div id="box" style="background-color:red;width:50px;">A</div>
+	    <div id="box" style="background-color:lightblue;width:50px;">B</div>
+	    <div id="box" style="background-color:yellow;width:50px;">C</div>
+	</div>
+</body>
+</html>

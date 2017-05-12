@@ -172,8 +172,8 @@
 	**1.setInterval()的第一个参数如果是字符串，这个字符串中的代码就是在全局环境中执行，作用域固定是全局作用域或window
 	**2.因此下面的IIFE中的定时器会去在全局作用域外找test()函数，因全局作用域是无法访问IIFE中的变量的，所以只显示‘全局作用域window’
 	*/
-	// (function(){
-	// 	function test(){
+	// (function() {
+	// 	function test() {
 	// 		console.log('闭包内');
 	// 	}
 
@@ -188,6 +188,52 @@
 	// 	console.log('全局作用域window')
 	// }
 	
+	/**
+	*
+	*eg10. Date对象
+	*1.new出来的对象是当前时间
+	*2.获得毫秒数的方法
+	*/
+	// (function() {
+	// 	let a = new Date();  
+	// 	let b = +new Date();
+	// 	console.log(a);         //当前时间
+	// 	console.log(b);
+	// 	console.log(a.valueOf());
+	// 	console.log(a.getTime());
+	// })()
+
+	/**
+	*
+	*eg10. valueOf
+	*1.The valueOf() method returns the primitive value of the specified object.
+	*2.还不是太明白
+	*/
+	// (function() {
+	// 	function myNumberType1(n) {
+	// 	    this.number = n;
+	// 	}
+
+	// 	function myNumberType2(n) {
+	// 	    this.number = n;
+	// 	}
+
+	// 	myNumberType2.prototype.valueOf = function() {
+	// 	    return this.number;
+	// 	};
+
+	// 	myObj1 = new myNumberType1(4);
+	// 	myObj2 = new myNumberType2(4);
+
+	// 	console.log(myObj1);
+	// 	console.log(myObj1 + 3);
+	// 	console.log(myObj2 + 3);
+
+	// })()
+
+	(function(){
+		console.log([1] == [1]);
+	})()
 	</script>
 </body>
 </html>

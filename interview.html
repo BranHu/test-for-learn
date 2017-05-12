@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // (function() {
+    //     console.log([1] == [1]); //false
+
+    //     //判断是对象
+    //     function isObj(object) {
+    //         return object && typeof(object) == 'object' && Object.prototype.toString.call(object).toLowerCase() == "[object object]";
+    //     }
+
+    //     //判断是数组对象
+    //     function isArray(object) {
+    //         return object && typeof(object) == 'object' && object.constructor == Array;
+    //     }
+
+    //     //获取长度
+    //     function getLength(object) {
+    //         var count = 0;
+    //         for (var i in object) count++;
+    //         return count;
+    //     }
+    // })()
+
+
+    /*
+     *使用promise.then(onFulfilled, onRejected) 的话
+     *在 onFulfilled 中发生异常的话，在 onRejected 中是捕获不到这个异常的。
+     *在 promise.then(onFulfilled).catch(onRejected) 的情况下
+     *then 中产生的异常能在 .catch 中捕获 .then 和 .catch 在本质上是没有区别的需要分场合使用。
+     *
+     *
+     */
+
+    // (function() {
+    //     let doSth = new Promise((resolve, reject) => {
+    //         console.log('hello');
+    //         resolve();
+    //     });
+
+    //     setTimeout(() => {
+    //         doSth.then(() => {
+    //             console.log('over');
+    //         })
+    //     }, 10000);
+    // })()
+
+  //   (function() {
+  //   	setTimeout(function() {
+		//     console.log(1)
+		// }, 0);
+
+		// new Promise(function executor(resolve) {
+		//     console.log(2);
+		//     for( var i=0; i<10000; i++ ) {
+		//     	i == 9999 && resolve();
+		//     }
+		//     console.log(3);
+		// }).then(function() {
+		//     console.log(4);
+		// });
+
+		// console.log(5);
+  //   })()
+
+        // const EventEmitter = require('events');
+        // const myEmitter = new EventEmitter();
+        // myEmitter.on('event', () => {      //给对象绑定事件函数，和addeventlistener一样
+        //     console.log('hello')
+        // })
+
+        // myEmitter.emit('event');    //触发事件，就和鼠标点击行为一样
+    </script>
+</body>
+
+</html>
