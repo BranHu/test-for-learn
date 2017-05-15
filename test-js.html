@@ -230,9 +230,18 @@
 	// 	console.log(myObj2 + 3);
 
 	// })()
-
+	
+	
+	/**
+	*
+	*eg10. contextmenu　事件
+	*
+	*
+	*/
 	(function(){
-		console.log([1] == [1]);
+		document.addEventListener('contextmenu', function() {
+			console.log(123);
+		})
 	})()
 	</script>
 </body>

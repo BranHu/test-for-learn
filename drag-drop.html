@@ -28,7 +28,7 @@
 	/*
     **html5中新增的drag和drop事件的相关使用方法
     **1.拖拽的元素要将其draggable属性设置为true
-    **2.拖拽的元素要设置ondragstart事件，在开始拖拽的时候出发，同时要利用event事件对象的dataTransfer对象的setData方法传递拖拽元素的id，其类似于一个通道
+    **2.拖拽的元素要设置ondragstart事件，在开始拖拽的时候触发，同时要利用event事件对象的dataTransfer对象的setData方法传递拖拽元素的id，其类似于一个通道
     **3.拖拽的元素还要设置ondrag事件，只要鼠标为放开，其一直被触发
     **4.接收的元素要设置ondragover事件，在拖拽的元素和接受的元素有交错的时候会触发
     **5.接收的原色要设置ondrop事件，在鼠标放下的时候触发，这里要利用event事件对象的dataTransfer对象的setData方法接收setData传递过来的信息
